@@ -73,8 +73,8 @@ class WeatherWarnings:
         self.readPagesPdf(pdf_data)
 
     def readPagesPdf(self, pdf_data):
-        memoryFIle = io.BytesIO(pdf_data)
-        datafromPdfPages = PdfFileReader(memoryFIle)
+        memoryFile = io.BytesIO(pdf_data)
+        datafromPdfPages = PdfFileReader(memoryFile)
         self.showAllData(datafromPdfPages)
 
     def showAllData(self, dataFromPdfPages):
