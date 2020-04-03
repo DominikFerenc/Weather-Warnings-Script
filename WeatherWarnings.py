@@ -10,7 +10,7 @@ class WeatherWarnings:
             with urllib.request.urlopen(self.pathWarnings) as urlNameFile:
                 self.getUrlNameFile(urlNameFile)
         except ConnectionError:
-            print("Err")
+            print("Conn Err")
 
 
 
@@ -30,14 +30,15 @@ class WeatherWarnings:
         tab_name_file = []
         for element in parse_html_warnings_data.find_all('a'):
             tab_name_file.append(''.join(element.findAll(text=True)))
-
-        self.removeGarbageHTML(tab_name_file)
+        self.removeGarbageHTML(tab_name_file) 
+        
     def removeGarbageHTML(self, tab_name_file):
         tab_name_file.remove('Name')
         tab_name_file.remove("Last modified")
         tab_name_file.remove("Size")
         tab_name_file.remove("Description")
         tab_name_file.remove("Parent Directory")
+        
         if not tab_name_file:
             print("Brak plików do otwarcia")
         else:
